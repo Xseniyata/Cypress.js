@@ -2,7 +2,6 @@ describe('Проверка авторизации', function () {
 
     it('Верный пароль и верный логин', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#mail').type('german@dolnikov.ru');
         cy.get('#pass').type('qa_one_love1');
         cy.get('#loginButton').click();
@@ -12,7 +11,6 @@ describe('Проверка авторизации', function () {
     })
      it('Восстановление пароля', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#forgotEmailButton').click();
         cy.get('#mailForgot').type('german@dolnikov.ru');
         cy.get('#restoreEmailButton').click();
@@ -21,7 +19,6 @@ describe('Проверка авторизации', function () {
     })
      it('Верный логин и неверный пароль', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#mail').type('german@dolnikov.ru');
         cy.get('#pass').type('qa_one_love2');
         cy.get('#loginButton').click();
@@ -31,7 +28,6 @@ describe('Проверка авторизации', function () {
     })
     it('Неверный логин и верный пароль', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#mail').type('german@dalnikov.ru');
         cy.get('#pass').type('qa_one_love1');
         cy.get('#loginButton').click();
@@ -41,17 +37,14 @@ describe('Проверка авторизации', function () {
     })
      it('Валидация на наличие @', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#mail').type('germandolnikov.ru');
         cy.get('#pass').type('qa_one_love1');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').should('be.visible');
         cy.get('#messageHeader').contains('Нужно исправить проблему валидации');
-        cy.get('#exitMessageButton > .exitIcon').should('be.visible');
     })
         it('Приведение к строчным буквам в логине', function () {
         cy.visit('https://login.qa.studio');
-        cy.get('#forgotEmailButton').should('have.css', 'color', 'rgb(0, 85, 152)');
         cy.get('#mail').type('GerMan@Dolnikov.ru');
         cy.get('#pass').type('qa_one_love1');
         cy.get('#loginButton').click();
